@@ -1,4 +1,6 @@
 package com.jegensomme.votesystem.web.user;
 
-public class AbstactUserController {
+import org.springframework.stereotype.Controller;
+
+public abstract class AbstactUserController {
 }

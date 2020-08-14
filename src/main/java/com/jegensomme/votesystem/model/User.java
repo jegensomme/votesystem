@@ -1,5 +1,6 @@
 package com.jegensomme.votesystem.model;
 
+import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.Date;
 import java.util.EnumSet;
@@ -16,9 +17,15 @@ public class User extends AbstractNamedEntity {
 
     private Set<Role> roles;
 
-    private Vote vote;
+    private LocalDateTime voted;
+
+    private Restaurant restaurant;
 
     public User() {
+    }
+
+    public User(User user) {
+        this(user.id, user.name, user.email, user.password, user.getRegistered(), user.getRoles());
     }
 
     public User(int id, String name, String email, String password, Role role, Role... roles) {
@@ -65,12 +72,12 @@ public class User extends AbstractNamedEntity {
         this.roles = CollectionUtils.isEmpty(roles) ? EnumSet.noneOf(Role.class) : EnumSet.copyOf(roles);
     }
 
-    public Vote getVote() {
-        return vote;
+    public Restaurant getRestaurant() {
+        return restaurant;
     }
 
-    public void setVote(Vote vote) {
-        this.vote = vote;
+    public void setRestaurant(Restaurant restaurant) {
+        this.restaurant = restaurant;
     }
 
     @Override
